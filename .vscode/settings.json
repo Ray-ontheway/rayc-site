@@ -1,0 +1,32 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.env": "$(capture).env.*",
+    "package.json": "pnpm-lock.yaml,LICENSE",
+    "tsconfig.json": "tsconfig.*",
+    "eslint.config.mjs": "prettier.config.mjs,.prettierignore,commitlint.config.mjs",
+    "*.ts": "$(capture).test.ts,*.spec.ts",
+    "*.tsx": "$(capture).test.tsx,*.spec.tsx"
+  }
+}

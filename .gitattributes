@@ -1,0 +1,7 @@
+# https://docs.github.com/cn/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+* text=auto eol=lf
+
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+*.{ico,png,jpg,jpeg,webp,svg,gif,woff,woff2} binary
