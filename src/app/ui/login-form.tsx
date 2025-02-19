@@ -9,14 +9,14 @@ import {
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
 import { Button } from './button';
 import { useActionState } from 'react';
-import { authenticate } from '@/lib/actions';
+import { login } from '@/lib/actions';
 import { useSearchParams } from 'next/navigation';
 
 export default function LoginForm() {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get('callbackUrl') || '/dashboard';
   const [errorMessage, formAction, isPending] = useActionState(
-    authenticate,
+    login,
     undefined,
   );
 

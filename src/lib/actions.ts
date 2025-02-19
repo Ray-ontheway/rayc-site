@@ -1,27 +1,22 @@
-'use server';
+import { doLogin, doLogout } from './api/auth';
 
-import { signIn } from '@/auth';
-import { AuthError } from 'next-auth';
-
-export async function authenticate(
-  preState: string | undefined,
-  formData: FormData,
-) {
+export async function login(preState: string | undefined, formData: FormData) {
   try {
-    console.log('formData', formData);
-    const result = await signIn('credentials', formData);
-    console.log('Sign in successful: ', result);
+    const result = await doLogin(
+      formData.get('email') as string,
+      formData.get('password') as string,
+    );
+    console.log('Login successful: ', result);
+    localStorage.setItem('token', result.data.accessToken);
   } catch (error) {
-    if (error instanceof AuthError) {
-      switch (error.message) {
-        case 'CredentialsSignin':
-          console.log('Invalid credentials');
-          return 'Invalid Credentials';
-        default:
-          console.log('Something went wrong');
-          return 'Something went wrong';
-      }
+    if (error instanceof Error) {
+      return 'Login failed: ' + error.message;
     }
     throw error;
   }
+}
+
+export async function logout() {
+  await doLogout();
+  console.log('Logout successful');
 }
