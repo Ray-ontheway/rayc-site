@@ -17,6 +17,7 @@ export async function login(preState: string | undefined, formData: FormData) {
 }
 
 export async function logout() {
-  await doLogout();
+  const token = localStorage.getItem('token') || '';
+  await doLogout(token);
   console.log('Logout successful');
 }
