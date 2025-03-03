@@ -13,6 +13,7 @@ pipeline {
                     withCredentials([file(credentialsId: '4b4cc097-021c-4765-a3af-5e19e4195bf0', variable: 'ENV_FILE')]) {
                         sh 'cp $ENV_FILE .env'
                     }
+                    sh 'cat .env'
                 }
             }
         }
